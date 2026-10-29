@@ -38,7 +38,7 @@ def _priority(request: Dict[str, Any], text: str) -> tuple[str, str]:
     return "medium", "Confirm impact and urgency with the reporter and compare with the approved site policy."
 
 
-def triage_incident(request: Dict[str, Any]) -> Dict[str, Any]:
+def triage_incident(request: Dict[str, Any], *, use_model: bool = True) -> Dict[str, Any]:
     description = str(request.get("description", "")).strip()
     category = _classify(description)
     priority, priority_reason = _priority(request, description)
@@ -79,7 +79,7 @@ def triage_incident(request: Dict[str, Any]) -> Dict[str, Any]:
         "Please confirm the asset details and follow the approved site procedure. This is a decision-support draft, not an instruction to operate, stop, isolate, or repair equipment."
     )
     # Potential safety cases never call a model for a suggested operational response.
-    if priority == "critical_review" or fallback_used:
+    if priority == "critical_review" or fallback_used or not use_model:
         generation = {"text": fallback_draft, "mode": "offline-template-demo", "error": ""}
     else:
         generation = generate_grounded_response(

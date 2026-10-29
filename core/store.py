@@ -4,6 +4,10 @@ import sqlite3
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
+class ReviewConflict(ValueError):
+    """The displayed review is stale or already finalised."""
+
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -36,6 +40,9 @@ def init_db() -> None:
                 reviewed_at TEXT
             )
         """)
+        columns = {r[1] for r in conn.execute("PRAGMA table_info(incidents)")}
+        if "version" not in columns:
+            conn.execute("ALTER TABLE incidents ADD COLUMN version INTEGER NOT NULL DEFAULT 0")
         conn.execute("""
             CREATE TABLE IF NOT EXISTS audit_events (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -60,7 +67,7 @@ def save_incident(ticket: Dict[str, Any], triage: Dict[str, Any]) -> Dict[str, A
             "INSERT INTO audit_events(incident_id,event_type,actor,details) VALUES(?,?,?,?)",
             (incident_id, "triaged", "system-demo", json.dumps({"model_mode": triage.get("model_mode"), "retrieval_mode": triage.get("retrieval_mode")})),
         )
-    return triage
+    return {**triage, "version": 0}
 
 
 def list_incidents(limit: int = 200) -> List[Dict[str, Any]]:
@@ -74,29 +81,36 @@ def list_incidents(limit: int = 200) -> List[Dict[str, Any]]:
         triage["reviewer"] = row["reviewer"]
         triage["review_comment"] = row["review_comment"]
         triage["reviewed_at"] = row["reviewed_at"]
+        triage["version"] = row["version"]
         triage["ticket"] = json.loads(row["ticket_json"])
         result.append(triage)
     return result
 
 
-def review_incident(incident_id: str, decision: str, reviewer: str, comment: str) -> Optional[Dict[str, Any]]:
+def review_incident(incident_id: str, decision: str, reviewer: str, comment: str,
+                    expected_version: int = 0) -> Optional[Dict[str, Any]]:
     init_db()
     from datetime import datetime, timezone
+    if decision not in {"approved", "rejected", "needs_more_information"}:
+        raise ValueError("Unsupported review decision")
     reviewed_at = datetime.now(timezone.utc).isoformat()
     with _connect() as conn:
-        row = conn.execute("SELECT triage_json FROM incidents WHERE incident_id=?", (incident_id,)).fetchone()
+        conn.execute("BEGIN IMMEDIATE")
+        row = conn.execute("SELECT * FROM incidents WHERE incident_id=?", (incident_id,)).fetchone()
         if row is None:
             return None
+        if row["version"] != expected_version or row["review_status"] in {"approved", "rejected"}:
+            raise ReviewConflict("Review changed or was finalised; reload the incident before reviewing")
         conn.execute(
-            "UPDATE incidents SET review_status=?,reviewer=?,review_comment=?,reviewed_at=? WHERE incident_id=?",
-            (decision, reviewer, comment, reviewed_at, incident_id),
+            "UPDATE incidents SET review_status=?,reviewer=?,review_comment=?,reviewed_at=?,version=version+1 WHERE incident_id=? AND version=?",
+            (decision, reviewer, comment, reviewed_at, incident_id, expected_version),
         )
         conn.execute(
             "INSERT INTO audit_events(incident_id,event_type,actor,details) VALUES(?,?,?,?)",
-            (incident_id, "human_review", reviewer, json.dumps({"decision": decision, "comment": comment})),
+            (incident_id, "human_review", reviewer, json.dumps({"actor_type": "unverified_demo_label", "previous_status": row["review_status"], "decision": decision, "comment": comment, "previous_version": expected_version, "version": expected_version + 1})),
         )
         result = json.loads(row["triage_json"])
-        result.update({"review_status": decision, "reviewer": reviewer, "review_comment": comment, "reviewed_at": reviewed_at})
+        result.update({"review_status": decision, "reviewer": reviewer, "review_comment": comment, "reviewed_at": reviewed_at, "version": expected_version + 1})
         return result
 
 
@@ -116,16 +130,18 @@ def metrics_summary() -> Dict[str, Any]:
 
 
 def get_incident(incident_id: str):
+    init_db()
     with _connect() as conn:
         row = conn.execute("SELECT * FROM incidents WHERE incident_id=?", (incident_id,)).fetchone()
     if row is None:
         return None
     result = json.loads(row["triage_json"])
-    result.update({key: row[key] for key in ("review_status", "reviewer", "review_comment", "reviewed_at")})
+    result.update({key: row[key] for key in ("review_status", "reviewer", "review_comment", "reviewed_at", "version")})
     return result
 
 
 def audit_history(incident_id: str):
+    init_db()
     with _connect() as conn:
         rows = conn.execute("SELECT * FROM audit_events WHERE incident_id=? ORDER BY id", (incident_id,)).fetchall()
     return [dict(row) for row in rows]

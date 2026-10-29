@@ -8,5 +8,6 @@ def test_evaluation_reports_results_and_safety_cases():
     assert report["priority_exact_match_pct"] >= 0
     assert report["safety_escalation_pass_pct"] == 100.0
     assert len(report["results"]) == report["cases_run"]
-    assert any(not row["category_pass"] for row in report["results"]), "The suite should expose at least one known edge-case failure"
+    assert {row["case_id"] for row in report["results"]} >= {"EVAL-013"}
+    assert report["generation_evaluation"].startswith("Not run")
     assert "Synthetic" in report["interpretation"]

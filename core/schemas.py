@@ -24,6 +24,62 @@ class IncidentRequest(BaseModel):
 
 
 class ReviewRequest(BaseModel):
+    expected_version: int = Field(default=0, ge=0, description="Version displayed when the review was loaded; stale or finalised reviews return 409")
     decision: Literal["approved", "rejected", "needs_more_information"]
     reviewer: str = Field(default="Demo Reviewer", min_length=2, max_length=100)
     comment: str = Field(default="", max_length=1000)
+
+
+class SourceReference(BaseModel):
+    article_id: str
+    title: str
+    retrieval_score: float
+
+
+class IncidentResponse(BaseModel):
+    incident_id: str
+    created_at: str
+    asset_id: str
+    site: str
+    category: str
+    suggested_priority: str
+    priority_reason: str
+    suggested_queue: str
+    suggested_next_step: str
+    retrieved_sources: list[SourceReference]
+    retrieval_mode: str
+    retrieval_confidence: float
+    fallback_used: bool
+    draft_response: str
+    human_review_required: bool
+    review_status: Literal["pending", "approved", "rejected", "needs_more_information"]
+    model_mode: str
+    generation_error: str
+    disclaimer: str
+    version: int = 0
+    reviewer: Optional[str] = None
+    review_comment: Optional[str] = None
+    reviewed_at: Optional[str] = None
+    ticket: Optional[dict] = None
+
+
+class AuditEvent(BaseModel):
+    id: int
+    event_time: str
+    incident_id: str
+    event_type: str
+    actor: str
+    details: str
+
+
+class MetricsResponse(BaseModel):
+    total_incidents: int
+    pending_reviews: int
+    critical_reviews: int
+    fallback_rate_pct: float
+    category_counts: dict[str, int]
+    review_counts: dict[str, int]
+
+
+class ErrorResponse(BaseModel):
+    detail: str

@@ -1,0 +1,14 @@
+case_id,expected_article_ids,retrieval_hit_at_3,first_relevant_rank,expected_fallback,description,expected_category,predicted_category,category_pass,expected_priority,predicted_priority,priority_pass,fallback_used,sources
+EVAL-001,,,,,Pump vibration is increasing and bearing noise started this morning,vibration_or_bearing,vibration_or_bearing,True,medium,medium,True,False,"SOP-PUMP-VIBRATION, SOP-LEAK-DETECTION, SOP-SENSOR-QUALITY"
+EVAL-002,,,,,Motor temperature is very high and a burning smell has been reported,overheating,overheating,True,critical_review,critical_review,True,False,"SOP-MOTOR-OVERHEAT, SOP-SENSOR-QUALITY, SOP-PUMP-VIBRATION"
+EVAL-003,,,,,Fluid leak near valve seal; amount is not known,leak_or_pressure,leak_or_pressure,True,critical_review,critical_review,True,False,"SOP-LEAK-DETECTION, SOP-SENSOR-QUALITY"
+EVAL-004,,,,,Conveyor belt is jammed and the production line has stopped,conveyor_or_blockage,conveyor_or_blockage,True,high,high,True,False,"SOP-CONVEYOR-JAM, SOP-MOTOR-OVERHEAT, SOP-INCIDENT-PRIORITY"
+EVAL-005,,,,,Pressure sensor reading has a spike and some readings are missing,sensor_or_data_quality,sensor_or_data_quality,True,low,low,True,False,"SOP-SENSOR-QUALITY, SOP-MOTOR-OVERHEAT, SOP-LEAK-DETECTION"
+EVAL-006,,,,,A fan makes an unusual noise and the vibration appears to be rising,vibration_or_bearing,vibration_or_bearing,True,medium_high,medium_high,True,False,"SOP-PUMP-VIBRATION, SOP-SENSOR-QUALITY, SOP-MOTOR-OVERHEAT"
+EVAL-007,,,,,Smoke is visible near the motor housing,overheating,overheating,True,critical_review,critical_review,True,False,"SOP-MOTOR-OVERHEAT, SOP-PUMP-VIBRATION, SOP-CONVEYOR-JAM"
+EVAL-008,,,,,Equipment is showing irregular telemetry and possible sensor drift,sensor_or_data_quality,sensor_or_data_quality,True,medium,medium,True,False,"SOP-SENSOR-QUALITY, SOP-MOTOR-OVERHEAT, SOP-LEAK-DETECTION"
+EVAL-009,,,,,A blue indicator flashes in a repeating pattern and the display reports code ZQ-992,general_maintenance,general_maintenance,True,low,low,True,True,
+EVAL-010,,,,,"There is a leak, the substance is unknown, and it is spreading across the floor",leak_or_pressure,leak_or_pressure,True,critical_review,critical_review,True,False,SOP-LEAK-DETECTION
+EVAL-011,,,,,"Conveyor is blocked, but there is no immediate production stop and downtime is below one hour",conveyor_or_blockage,conveyor_or_blockage,True,low,low,True,False,"SOP-MOTOR-OVERHEAT, SOP-INCIDENT-PRIORITY, SOP-CONVEYOR-JAM"
+EVAL-012,,,,,Pump seal is leaking slowly and maintenance wants to review approved work instructions,leak_or_pressure,leak_or_pressure,True,medium,medium,True,False,"SOP-PUMP-VIBRATION, SOP-LEAK-DETECTION, SOP-MOTOR-OVERHEAT"
+EVAL-013,,,,,A small wet patch appears beneath equipment; substance and source are not confirmed,leak_or_pressure,general_maintenance,False,medium,medium,True,False,"SOP-SENSOR-QUALITY, SOP-LEAK-DETECTION, SOP-MOTOR-OVERHEAT"

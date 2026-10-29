@@ -1,0 +1,683 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "CriticalOps local connector prototype",
+    "version": "0.2.0",
+    "description": "Locally validated definition only. No Power Platform import or live integration is asserted. Unauthenticated synthetic demo; do not expose publicly."
+  },
+  "host": "localhost:8000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/incidents/triage": {
+      "post": {
+        "operationId": "triageIncident",
+        "summary": "Triage",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/IncidentRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "schema": {
+              "$ref": "#/definitions/IncidentResponse"
+            }
+          },
+          "409": {
+            "description": "Incident ID already exists",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "schema": {
+              "$ref": "#/definitions/HTTPValidationError"
+            }
+          }
+        }
+      }
+    },
+    "/api/incidents": {
+      "get": {
+        "operationId": "listIncidents",
+        "summary": "Incidents",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "default": 200
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/IncidentResponse"
+              },
+              "title": "Response Listincidents"
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "schema": {
+              "$ref": "#/definitions/HTTPValidationError"
+            }
+          }
+        }
+      }
+    },
+    "/api/incidents/{incident_id}/review": {
+      "post": {
+        "operationId": "reviewIncident",
+        "summary": "Review",
+        "parameters": [
+          {
+            "name": "incident_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ReviewRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "schema": {
+              "$ref": "#/definitions/IncidentResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "409": {
+            "description": "Stale or finalised review",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "schema": {
+              "$ref": "#/definitions/HTTPValidationError"
+            }
+          }
+        }
+      }
+    },
+    "/api/metrics": {
+      "get": {
+        "operationId": "getMetrics",
+        "summary": "Metrics",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "schema": {
+              "$ref": "#/definitions/MetricsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/incidents/{incident_id}": {
+      "get": {
+        "operationId": "getIncident",
+        "summary": "Incident Detail",
+        "parameters": [
+          {
+            "name": "incident_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "schema": {
+              "$ref": "#/definitions/IncidentResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "schema": {
+              "$ref": "#/definitions/HTTPValidationError"
+            }
+          }
+        }
+      }
+    },
+    "/api/incidents/{incident_id}/audit": {
+      "get": {
+        "operationId": "getIncidentAudit",
+        "summary": "Incident Audit",
+        "parameters": [
+          {
+            "name": "incident_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AuditEvent"
+              },
+              "title": "Response Getincidentaudit"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "schema": {
+              "$ref": "#/definitions/HTTPValidationError"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "AuditEvent": {
+      "properties": {
+        "id": {
+          "type": "integer",
+          "title": "Id"
+        },
+        "event_time": {
+          "type": "string",
+          "title": "Event Time"
+        },
+        "incident_id": {
+          "type": "string",
+          "title": "Incident Id"
+        },
+        "event_type": {
+          "type": "string",
+          "title": "Event Type"
+        },
+        "actor": {
+          "type": "string",
+          "title": "Actor"
+        },
+        "details": {
+          "type": "string",
+          "title": "Details"
+        }
+      },
+      "type": "object",
+      "required": [
+        "id",
+        "event_time",
+        "incident_id",
+        "event_type",
+        "actor",
+        "details"
+      ],
+      "title": "AuditEvent"
+    },
+    "ErrorResponse": {
+      "properties": {
+        "detail": {
+          "type": "string",
+          "title": "Detail"
+        }
+      },
+      "type": "object",
+      "required": [
+        "detail"
+      ],
+      "title": "ErrorResponse"
+    },
+    "HTTPValidationError": {
+      "properties": {
+        "detail": {
+          "items": {
+            "$ref": "#/definitions/ValidationError"
+          },
+          "type": "array",
+          "title": "Detail"
+        }
+      },
+      "type": "object",
+      "title": "HTTPValidationError"
+    },
+    "IncidentRequest": {
+      "properties": {
+        "incident_id": {
+          "title": "Incident Id",
+          "type": "string",
+          "maxLength": 40,
+          "x-nullable": true
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 2000,
+          "minLength": 8,
+          "title": "Description"
+        },
+        "asset_id": {
+          "type": "string",
+          "maxLength": 80,
+          "title": "Asset Id",
+          "default": "ASSET-UNKNOWN"
+        },
+        "site": {
+          "type": "string",
+          "maxLength": 120,
+          "title": "Site",
+          "default": "Demo Site"
+        },
+        "production_impact": {
+          "type": "integer",
+          "maximum": 5.0,
+          "minimum": 1.0,
+          "title": "Production Impact",
+          "default": 3
+        },
+        "estimated_downtime_hours": {
+          "type": "number",
+          "maximum": 10000.0,
+          "minimum": 0.0,
+          "title": "Estimated Downtime Hours",
+          "default": 0
+        },
+        "safety_related": {
+          "type": "boolean",
+          "title": "Safety Related",
+          "default": false
+        }
+      },
+      "type": "object",
+      "required": [
+        "description"
+      ],
+      "title": "IncidentRequest"
+    },
+    "IncidentResponse": {
+      "properties": {
+        "incident_id": {
+          "type": "string",
+          "title": "Incident Id"
+        },
+        "created_at": {
+          "type": "string",
+          "title": "Created At"
+        },
+        "asset_id": {
+          "type": "string",
+          "title": "Asset Id"
+        },
+        "site": {
+          "type": "string",
+          "title": "Site"
+        },
+        "category": {
+          "type": "string",
+          "title": "Category"
+        },
+        "suggested_priority": {
+          "type": "string",
+          "title": "Suggested Priority"
+        },
+        "priority_reason": {
+          "type": "string",
+          "title": "Priority Reason"
+        },
+        "suggested_queue": {
+          "type": "string",
+          "title": "Suggested Queue"
+        },
+        "suggested_next_step": {
+          "type": "string",
+          "title": "Suggested Next Step"
+        },
+        "retrieved_sources": {
+          "items": {
+            "$ref": "#/definitions/SourceReference"
+          },
+          "type": "array",
+          "title": "Retrieved Sources"
+        },
+        "retrieval_mode": {
+          "type": "string",
+          "title": "Retrieval Mode"
+        },
+        "retrieval_confidence": {
+          "type": "number",
+          "title": "Retrieval Confidence"
+        },
+        "fallback_used": {
+          "type": "boolean",
+          "title": "Fallback Used"
+        },
+        "draft_response": {
+          "type": "string",
+          "title": "Draft Response"
+        },
+        "human_review_required": {
+          "type": "boolean",
+          "title": "Human Review Required"
+        },
+        "review_status": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "approved",
+            "rejected",
+            "needs_more_information"
+          ],
+          "title": "Review Status"
+        },
+        "model_mode": {
+          "type": "string",
+          "title": "Model Mode"
+        },
+        "generation_error": {
+          "type": "string",
+          "title": "Generation Error"
+        },
+        "disclaimer": {
+          "type": "string",
+          "title": "Disclaimer"
+        },
+        "version": {
+          "type": "integer",
+          "title": "Version",
+          "default": 0
+        },
+        "reviewer": {
+          "title": "Reviewer",
+          "type": "string",
+          "x-nullable": true
+        },
+        "review_comment": {
+          "title": "Review Comment",
+          "type": "string",
+          "x-nullable": true
+        },
+        "reviewed_at": {
+          "title": "Reviewed At",
+          "type": "string",
+          "x-nullable": true
+        },
+        "ticket": {
+          "title": "Ticket",
+          "additionalProperties": true,
+          "type": "object",
+          "x-nullable": true
+        }
+      },
+      "type": "object",
+      "required": [
+        "incident_id",
+        "created_at",
+        "asset_id",
+        "site",
+        "category",
+        "suggested_priority",
+        "priority_reason",
+        "suggested_queue",
+        "suggested_next_step",
+        "retrieved_sources",
+        "retrieval_mode",
+        "retrieval_confidence",
+        "fallback_used",
+        "draft_response",
+        "human_review_required",
+        "review_status",
+        "model_mode",
+        "generation_error",
+        "disclaimer"
+      ],
+      "title": "IncidentResponse"
+    },
+    "MetricsResponse": {
+      "properties": {
+        "total_incidents": {
+          "type": "integer",
+          "title": "Total Incidents"
+        },
+        "pending_reviews": {
+          "type": "integer",
+          "title": "Pending Reviews"
+        },
+        "critical_reviews": {
+          "type": "integer",
+          "title": "Critical Reviews"
+        },
+        "fallback_rate_pct": {
+          "type": "number",
+          "title": "Fallback Rate Pct"
+        },
+        "category_counts": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "type": "object",
+          "title": "Category Counts"
+        },
+        "review_counts": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "type": "object",
+          "title": "Review Counts"
+        }
+      },
+      "type": "object",
+      "required": [
+        "total_incidents",
+        "pending_reviews",
+        "critical_reviews",
+        "fallback_rate_pct",
+        "category_counts",
+        "review_counts"
+      ],
+      "title": "MetricsResponse"
+    },
+    "ReviewRequest": {
+      "properties": {
+        "expected_version": {
+          "type": "integer",
+          "minimum": 0.0,
+          "title": "Expected Version",
+          "description": "Version displayed when the review was loaded; stale or finalised reviews return 409",
+          "default": 0
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "approved",
+            "rejected",
+            "needs_more_information"
+          ],
+          "title": "Decision"
+        },
+        "reviewer": {
+          "type": "string",
+          "maxLength": 100,
+          "minLength": 2,
+          "title": "Reviewer",
+          "default": "Demo Reviewer"
+        },
+        "comment": {
+          "type": "string",
+          "maxLength": 1000,
+          "title": "Comment",
+          "default": ""
+        }
+      },
+      "type": "object",
+      "required": [
+        "decision"
+      ],
+      "title": "ReviewRequest"
+    },
+    "SourceReference": {
+      "properties": {
+        "article_id": {
+          "type": "string",
+          "title": "Article Id"
+        },
+        "title": {
+          "type": "string",
+          "title": "Title"
+        },
+        "retrieval_score": {
+          "type": "number",
+          "title": "Retrieval Score"
+        }
+      },
+      "type": "object",
+      "required": [
+        "article_id",
+        "title",
+        "retrieval_score"
+      ],
+      "title": "SourceReference"
+    },
+    "UseCaseAssessment": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 120,
+          "minLength": 3,
+          "title": "Name"
+        },
+        "business_problem": {
+          "type": "string",
+          "maxLength": 1000,
+          "minLength": 8,
+          "title": "Business Problem"
+        },
+        "business_value": {
+          "type": "integer",
+          "maximum": 5.0,
+          "minimum": 1.0,
+          "title": "Business Value",
+          "description": "1=low, 5=high"
+        },
+        "technical_feasibility": {
+          "type": "integer",
+          "maximum": 5.0,
+          "minimum": 1.0,
+          "title": "Technical Feasibility"
+        },
+        "data_readiness": {
+          "type": "integer",
+          "maximum": 5.0,
+          "minimum": 1.0,
+          "title": "Data Readiness"
+        },
+        "governance_readiness": {
+          "type": "integer",
+          "maximum": 5.0,
+          "minimum": 1.0,
+          "title": "Governance Readiness"
+        },
+        "scalability": {
+          "type": "integer",
+          "maximum": 5.0,
+          "minimum": 1.0,
+          "title": "Scalability"
+        },
+        "implementation_effort": {
+          "type": "integer",
+          "maximum": 5.0,
+          "minimum": 1.0,
+          "title": "Implementation Effort",
+          "description": "1=low effort, 5=high effort"
+        }
+      },
+      "type": "object",
+      "required": [
+        "name",
+        "business_problem",
+        "business_value",
+        "technical_feasibility",
+        "data_readiness",
+        "governance_readiness",
+        "scalability",
+        "implementation_effort"
+      ],
+      "title": "UseCaseAssessment"
+    },
+    "ValidationError": {
+      "properties": {
+        "loc": {
+          "items": {},
+          "type": "array",
+          "title": "Location"
+        },
+        "msg": {
+          "type": "string",
+          "title": "Message"
+        },
+        "type": {
+          "type": "string",
+          "title": "Error Type"
+        },
+        "input": {
+          "title": "Input"
+        },
+        "ctx": {
+          "type": "object",
+          "title": "Context"
+        }
+      },
+      "type": "object",
+      "required": [
+        "loc",
+        "msg",
+        "type"
+      ],
+      "title": "ValidationError"
+    }
+  }
+}

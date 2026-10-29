@@ -1,0 +1,675 @@
+{
+  "cases_run": 36,
+  "category_matches": 30,
+  "priority_matches": 36,
+  "safety_cases": 6,
+  "safety_escalations": 6,
+  "retrieval_cases_labelled": 30,
+  "retrieval_hits_at_3": 26,
+  "retrieval_hit_at_3_pct": 86.7,
+  "mean_reciprocal_rank_at_3": 0.8444,
+  "fallback_labelled_cases": 36,
+  "fallback_true_positives": 5,
+  "fallback_predicted_positives": 8,
+  "fallback_expected_positives": 6,
+  "fallback_precision": 0.625,
+  "fallback_recall": 0.8333,
+  "generation_evaluation": "Not run: deterministic evaluation disables all external model calls",
+  "category_exact_match_pct": 83.3,
+  "priority_exact_match_pct": 100.0,
+  "safety_escalation_pass_pct": 100.0,
+  "fallback_cases": 8,
+  "results": [
+    {
+      "case_id": "CHALLENGE-001",
+      "expected_article_ids": [
+        "SOP-PUMP-VIBRATION"
+      ],
+      "retrieval_hit_at_3": true,
+      "first_relevant_rank": 1,
+      "expected_fallback": false,
+      "description": "Pump bearing noise increased since the last shift.",
+      "expected_category": "vibration_or_bearing",
+      "predicted_category": "vibration_or_bearing",
+      "category_pass": true,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-PUMP-VIBRATION, SOP-MOTOR-OVERHEAT, SOP-LEAK-DETECTION"
+    },
+    {
+      "case_id": "CHALLENGE-002",
+      "expected_article_ids": [
+        "SOP-PUMP-VIBRATION"
+      ],
+      "retrieval_hit_at_3": true,
+      "first_relevant_rank": 1,
+      "expected_fallback": false,
+      "description": "The shaft has strong vibration at normal load.",
+      "expected_category": "vibration_or_bearing",
+      "predicted_category": "vibration_or_bearing",
+      "category_pass": true,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-PUMP-VIBRATION, SOP-SENSOR-QUALITY, SOP-MOTOR-OVERHEAT"
+    },
+    {
+      "case_id": "CHALLENGE-003",
+      "expected_article_ids": [
+        "SOP-PUMP-VIBRATION"
+      ],
+      "retrieval_hit_at_3": false,
+      "first_relevant_rank": null,
+      "expected_fallback": false,
+      "description": "A rotating assembly rattles and shakes at steady speed.",
+      "expected_category": "vibration_or_bearing",
+      "predicted_category": "general_maintenance",
+      "category_pass": false,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": true,
+      "sources": ""
+    },
+    {
+      "case_id": "CHALLENGE-004",
+      "expected_article_ids": [
+        "SOP-PUMP-VIBRATION"
+      ],
+      "retrieval_hit_at_3": true,
+      "first_relevant_rank": 1,
+      "expected_fallback": false,
+      "description": "Pump misalignment is suspected after unusual vibration.",
+      "expected_category": "vibration_or_bearing",
+      "predicted_category": "vibration_or_bearing",
+      "category_pass": true,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-PUMP-VIBRATION, SOP-LEAK-DETECTION, SOP-SENSOR-QUALITY"
+    },
+    {
+      "case_id": "CHALLENGE-005",
+      "expected_article_ids": [
+        "SOP-PUMP-VIBRATION"
+      ],
+      "retrieval_hit_at_3": true,
+      "first_relevant_rank": 1,
+      "expected_fallback": false,
+      "description": "Bearing housing vibration and noise are increasing; safety review requested.",
+      "expected_category": "vibration_or_bearing",
+      "predicted_category": "vibration_or_bearing",
+      "category_pass": true,
+      "expected_priority": "critical_review",
+      "predicted_priority": "critical_review",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-PUMP-VIBRATION, SOP-INCIDENT-PRIORITY, SOP-SENSOR-QUALITY"
+    },
+    {
+      "case_id": "CHALLENGE-006",
+      "expected_article_ids": [
+        "SOP-PUMP-VIBRATION"
+      ],
+      "retrieval_hit_at_3": true,
+      "first_relevant_rank": 3,
+      "expected_fallback": false,
+      "description": "A fan has vibration but no reported temperature change.",
+      "expected_category": "vibration_or_bearing",
+      "predicted_category": "vibration_or_bearing",
+      "category_pass": true,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-SENSOR-QUALITY, SOP-MOTOR-OVERHEAT, SOP-PUMP-VIBRATION"
+    },
+    {
+      "case_id": "CHALLENGE-007",
+      "expected_article_ids": [
+        "SOP-MOTOR-OVERHEAT"
+      ],
+      "retrieval_hit_at_3": true,
+      "first_relevant_rank": 1,
+      "expected_fallback": false,
+      "description": "The motor is hot during normal operation.",
+      "expected_category": "overheating",
+      "predicted_category": "overheating",
+      "category_pass": true,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-MOTOR-OVERHEAT, SOP-PUMP-VIBRATION, SOP-CONVEYOR-JAM"
+    },
+    {
+      "case_id": "CHALLENGE-008",
+      "expected_article_ids": [
+        "SOP-MOTOR-OVERHEAT"
+      ],
+      "retrieval_hit_at_3": true,
+      "first_relevant_rank": 1,
+      "expected_fallback": false,
+      "description": "Motor temperature rises despite unchanged load.",
+      "expected_category": "overheating",
+      "predicted_category": "overheating",
+      "category_pass": true,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-MOTOR-OVERHEAT, SOP-SENSOR-QUALITY, SOP-PUMP-VIBRATION"
+    },
+    {
+      "case_id": "CHALLENGE-009",
+      "expected_article_ids": [
+        "SOP-MOTOR-OVERHEAT"
+      ],
+      "retrieval_hit_at_3": false,
+      "first_relevant_rank": null,
+      "expected_fallback": false,
+      "description": "The drive casing feels excessively warm during the shift.",
+      "expected_category": "overheating",
+      "predicted_category": "general_maintenance",
+      "category_pass": false,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": true,
+      "sources": ""
+    },
+    {
+      "case_id": "CHALLENGE-010",
+      "expected_article_ids": [
+        "SOP-MOTOR-OVERHEAT"
+      ],
+      "retrieval_hit_at_3": true,
+      "first_relevant_rank": 1,
+      "expected_fallback": false,
+      "description": "Overheating follows a ventilation blockage in the motor.",
+      "expected_category": "overheating",
+      "predicted_category": "overheating",
+      "category_pass": true,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-MOTOR-OVERHEAT, SOP-CONVEYOR-JAM, SOP-PUMP-VIBRATION"
+    },
+    {
+      "case_id": "CHALLENGE-011",
+      "expected_article_ids": [
+        "SOP-MOTOR-OVERHEAT"
+      ],
+      "retrieval_hit_at_3": true,
+      "first_relevant_rank": 1,
+      "expected_fallback": false,
+      "description": "Smoke is visible beside the motor.",
+      "expected_category": "overheating",
+      "predicted_category": "overheating",
+      "category_pass": true,
+      "expected_priority": "critical_review",
+      "predicted_priority": "critical_review",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-MOTOR-OVERHEAT, SOP-PUMP-VIBRATION, SOP-CONVEYOR-JAM"
+    },
+    {
+      "case_id": "CHALLENGE-012",
+      "expected_article_ids": [
+        "SOP-MOTOR-OVERHEAT"
+      ],
+      "retrieval_hit_at_3": true,
+      "first_relevant_rank": 1,
+      "expected_fallback": false,
+      "description": "A burning smell was reported from the fan motor.",
+      "expected_category": "overheating",
+      "predicted_category": "overheating",
+      "category_pass": true,
+      "expected_priority": "critical_review",
+      "predicted_priority": "critical_review",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-MOTOR-OVERHEAT, SOP-PUMP-VIBRATION, SOP-CONVEYOR-JAM"
+    },
+    {
+      "case_id": "CHALLENGE-013",
+      "expected_article_ids": [
+        "SOP-LEAK-DETECTION"
+      ],
+      "retrieval_hit_at_3": true,
+      "first_relevant_rank": 1,
+      "expected_fallback": false,
+      "description": "Fluid is leaking at the pipe seal.",
+      "expected_category": "leak_or_pressure",
+      "predicted_category": "leak_or_pressure",
+      "category_pass": true,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-LEAK-DETECTION"
+    },
+    {
+      "case_id": "CHALLENGE-014",
+      "expected_article_ids": [
+        "SOP-LEAK-DETECTION"
+      ],
+      "retrieval_hit_at_3": true,
+      "first_relevant_rank": 1,
+      "expected_fallback": false,
+      "description": "Hydraulic pressure drops and a valve leak is visible.",
+      "expected_category": "leak_or_pressure",
+      "predicted_category": "leak_or_pressure",
+      "category_pass": true,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-LEAK-DETECTION, SOP-SENSOR-QUALITY, SOP-MOTOR-OVERHEAT"
+    },
+    {
+      "case_id": "CHALLENGE-015",
+      "expected_article_ids": [
+        "SOP-LEAK-DETECTION"
+      ],
+      "retrieval_hit_at_3": false,
+      "first_relevant_rank": null,
+      "expected_fallback": false,
+      "description": "A wet patch grows beneath the unit; the source is unconfirmed.",
+      "expected_category": "leak_or_pressure",
+      "predicted_category": "general_maintenance",
+      "category_pass": false,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": true,
+      "sources": "SOP-SENSOR-QUALITY"
+    },
+    {
+      "case_id": "CHALLENGE-016",
+      "expected_article_ids": [
+        "SOP-LEAK-DETECTION"
+      ],
+      "retrieval_hit_at_3": true,
+      "first_relevant_rank": 1,
+      "expected_fallback": false,
+      "description": "Small droplets collect beneath the pump seal.",
+      "expected_category": "leak_or_pressure",
+      "predicted_category": "leak_or_pressure",
+      "category_pass": true,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-LEAK-DETECTION, SOP-PUMP-VIBRATION, SOP-MOTOR-OVERHEAT"
+    },
+    {
+      "case_id": "CHALLENGE-017",
+      "expected_article_ids": [
+        "SOP-LEAK-DETECTION"
+      ],
+      "retrieval_hit_at_3": true,
+      "first_relevant_rank": 1,
+      "expected_fallback": false,
+      "description": "Unknown chemical fluid is spreading from the pipe.",
+      "expected_category": "leak_or_pressure",
+      "predicted_category": "leak_or_pressure",
+      "category_pass": true,
+      "expected_priority": "critical_review",
+      "predicted_priority": "critical_review",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-LEAK-DETECTION"
+    },
+    {
+      "case_id": "CHALLENGE-018",
+      "expected_article_ids": [
+        "SOP-LEAK-DETECTION"
+      ],
+      "retrieval_hit_at_3": true,
+      "first_relevant_rank": 1,
+      "expected_fallback": false,
+      "description": "A leakage trail appears near the hydraulic valve.",
+      "expected_category": "leak_or_pressure",
+      "predicted_category": "leak_or_pressure",
+      "category_pass": true,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-LEAK-DETECTION, SOP-PUMP-VIBRATION"
+    },
+    {
+      "case_id": "CHALLENGE-019",
+      "expected_article_ids": [
+        "SOP-CONVEYOR-JAM"
+      ],
+      "retrieval_hit_at_3": true,
+      "first_relevant_rank": 1,
+      "expected_fallback": false,
+      "description": "The conveyor belt is jammed beside the transfer point.",
+      "expected_category": "conveyor_or_blockage",
+      "predicted_category": "conveyor_or_blockage",
+      "category_pass": true,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-CONVEYOR-JAM, SOP-MOTOR-OVERHEAT"
+    },
+    {
+      "case_id": "CHALLENGE-020",
+      "expected_article_ids": [
+        "SOP-CONVEYOR-JAM"
+      ],
+      "retrieval_hit_at_3": true,
+      "first_relevant_rank": 1,
+      "expected_fallback": false,
+      "description": "A blockage stops products moving along the conveyor.",
+      "expected_category": "conveyor_or_blockage",
+      "predicted_category": "conveyor_or_blockage",
+      "category_pass": true,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-CONVEYOR-JAM, SOP-MOTOR-OVERHEAT"
+    },
+    {
+      "case_id": "CHALLENGE-021",
+      "expected_article_ids": [
+        "SOP-CONVEYOR-JAM"
+      ],
+      "retrieval_hit_at_3": true,
+      "first_relevant_rank": 1,
+      "expected_fallback": false,
+      "description": "Packages are stuck on the belt at the loading area.",
+      "expected_category": "conveyor_or_blockage",
+      "predicted_category": "conveyor_or_blockage",
+      "category_pass": true,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-CONVEYOR-JAM"
+    },
+    {
+      "case_id": "CHALLENGE-022",
+      "expected_article_ids": [
+        "SOP-CONVEYOR-JAM"
+      ],
+      "retrieval_hit_at_3": true,
+      "first_relevant_rank": 1,
+      "expected_fallback": false,
+      "description": "The material transfer line will not advance packages.",
+      "expected_category": "conveyor_or_blockage",
+      "predicted_category": "general_maintenance",
+      "category_pass": false,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-CONVEYOR-JAM"
+    },
+    {
+      "case_id": "CHALLENGE-023",
+      "expected_article_ids": [
+        "SOP-CONVEYOR-JAM"
+      ],
+      "retrieval_hit_at_3": false,
+      "first_relevant_rank": null,
+      "expected_fallback": false,
+      "description": "Conveyor jam has trapped material; safety review requested.",
+      "expected_category": "conveyor_or_blockage",
+      "predicted_category": "conveyor_or_blockage",
+      "category_pass": true,
+      "expected_priority": "critical_review",
+      "predicted_priority": "critical_review",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-INCIDENT-PRIORITY, SOP-PUMP-VIBRATION, SOP-MOTOR-OVERHEAT"
+    },
+    {
+      "case_id": "CHALLENGE-024",
+      "expected_article_ids": [
+        "SOP-CONVEYOR-JAM"
+      ],
+      "retrieval_hit_at_3": true,
+      "first_relevant_rank": 1,
+      "expected_fallback": false,
+      "description": "Conveyor movement is uneven after a belt blockage.",
+      "expected_category": "conveyor_or_blockage",
+      "predicted_category": "conveyor_or_blockage",
+      "category_pass": true,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-CONVEYOR-JAM, SOP-MOTOR-OVERHEAT"
+    },
+    {
+      "case_id": "CHALLENGE-025",
+      "expected_article_ids": [
+        "SOP-SENSOR-QUALITY"
+      ],
+      "retrieval_hit_at_3": true,
+      "first_relevant_rank": 1,
+      "expected_fallback": false,
+      "description": "Telemetry is missing for several timestamps.",
+      "expected_category": "sensor_or_data_quality",
+      "predicted_category": "sensor_or_data_quality",
+      "category_pass": true,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-SENSOR-QUALITY, SOP-INCIDENT-PRIORITY"
+    },
+    {
+      "case_id": "CHALLENGE-026",
+      "expected_article_ids": [
+        "SOP-SENSOR-QUALITY"
+      ],
+      "retrieval_hit_at_3": true,
+      "first_relevant_rank": 1,
+      "expected_fallback": false,
+      "description": "Sensor drift makes readings inconsistent.",
+      "expected_category": "sensor_or_data_quality",
+      "predicted_category": "sensor_or_data_quality",
+      "category_pass": true,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-SENSOR-QUALITY"
+    },
+    {
+      "case_id": "CHALLENGE-027",
+      "expected_article_ids": [
+        "SOP-SENSOR-QUALITY"
+      ],
+      "retrieval_hit_at_3": true,
+      "first_relevant_rank": 1,
+      "expected_fallback": false,
+      "description": "A pressure sensor has duplicate timestamps and missing data.",
+      "expected_category": "sensor_or_data_quality",
+      "predicted_category": "sensor_or_data_quality",
+      "category_pass": true,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-SENSOR-QUALITY, SOP-LEAK-DETECTION, SOP-INCIDENT-PRIORITY"
+    },
+    {
+      "case_id": "CHALLENGE-028",
+      "expected_article_ids": [
+        "SOP-SENSOR-QUALITY"
+      ],
+      "retrieval_hit_at_3": true,
+      "first_relevant_rank": 1,
+      "expected_fallback": false,
+      "description": "The temperature sensor reading spikes while the redundant gauge is stable.",
+      "expected_category": "sensor_or_data_quality",
+      "predicted_category": "sensor_or_data_quality",
+      "category_pass": true,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-SENSOR-QUALITY, SOP-MOTOR-OVERHEAT"
+    },
+    {
+      "case_id": "CHALLENGE-029",
+      "expected_article_ids": [
+        "SOP-SENSOR-QUALITY"
+      ],
+      "retrieval_hit_at_3": true,
+      "first_relevant_rank": 1,
+      "expected_fallback": false,
+      "description": "Vibration sensor telemetry has inconsistent units; safety review requested.",
+      "expected_category": "sensor_or_data_quality",
+      "predicted_category": "sensor_or_data_quality",
+      "category_pass": true,
+      "expected_priority": "critical_review",
+      "predicted_priority": "critical_review",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-SENSOR-QUALITY, SOP-PUMP-VIBRATION, SOP-INCIDENT-PRIORITY"
+    },
+    {
+      "case_id": "CHALLENGE-030",
+      "expected_article_ids": [
+        "SOP-SENSOR-QUALITY"
+      ],
+      "retrieval_hit_at_3": true,
+      "first_relevant_rank": 1,
+      "expected_fallback": false,
+      "description": "The reported values disagree with the redundant measurement.",
+      "expected_category": "sensor_or_data_quality",
+      "predicted_category": "general_maintenance",
+      "category_pass": false,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-SENSOR-QUALITY"
+    },
+    {
+      "case_id": "CHALLENGE-031",
+      "expected_article_ids": [],
+      "retrieval_hit_at_3": null,
+      "first_relevant_rank": null,
+      "expected_fallback": true,
+      "description": "A purple display icon appears beside code QZX-812.",
+      "expected_category": "general_maintenance",
+      "predicted_category": "general_maintenance",
+      "category_pass": true,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": true,
+      "sources": ""
+    },
+    {
+      "case_id": "CHALLENGE-032",
+      "expected_article_ids": [],
+      "retrieval_hit_at_3": null,
+      "first_relevant_rank": null,
+      "expected_fallback": true,
+      "description": "Please provide the exact torque for bolt QX-99.",
+      "expected_category": "general_maintenance",
+      "predicted_category": "general_maintenance",
+      "category_pass": true,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": true,
+      "sources": ""
+    },
+    {
+      "case_id": "CHALLENGE-033",
+      "expected_article_ids": [],
+      "retrieval_hit_at_3": null,
+      "first_relevant_rank": null,
+      "expected_fallback": true,
+      "description": "How do I reset access credentials for the payroll application?",
+      "expected_category": "general_maintenance",
+      "predicted_category": "general_maintenance",
+      "category_pass": true,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": true,
+      "sources": ""
+    },
+    {
+      "case_id": "CHALLENGE-034",
+      "expected_article_ids": [],
+      "retrieval_hit_at_3": null,
+      "first_relevant_rank": null,
+      "expected_fallback": true,
+      "description": "Explain the cafeteria menu for tomorrow.",
+      "expected_category": "general_maintenance",
+      "predicted_category": "general_maintenance",
+      "category_pass": true,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": true,
+      "sources": ""
+    },
+    {
+      "case_id": "CHALLENGE-035",
+      "expected_article_ids": [],
+      "retrieval_hit_at_3": null,
+      "first_relevant_rank": null,
+      "expected_fallback": true,
+      "description": "The panel shows symbol ZQ with no other details.",
+      "expected_category": "general_maintenance",
+      "predicted_category": "general_maintenance",
+      "category_pass": true,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": true,
+      "sources": ""
+    },
+    {
+      "case_id": "CHALLENGE-036",
+      "expected_article_ids": [],
+      "retrieval_hit_at_3": null,
+      "first_relevant_rank": null,
+      "expected_fallback": true,
+      "description": "Give the approved pressure limit for an undocumented asset XZ-44.",
+      "expected_category": "general_maintenance",
+      "predicted_category": "leak_or_pressure",
+      "category_pass": false,
+      "expected_priority": "medium",
+      "predicted_priority": "medium",
+      "priority_pass": true,
+      "fallback_used": false,
+      "sources": "SOP-SENSOR-QUALITY, SOP-LEAK-DETECTION, SOP-PUMP-VIBRATION"
+    }
+  ],
+  "interpretation": "Synthetic offline evaluation of the current rule-and-keyword baseline. These scores are not evidence of production performance and should not be represented as client outcomes.",
+  "hash_encoding": "UTF-8 with LF newlines, BOM removed",
+  "dataset": "challenge_cases.json",
+  "dataset_sha256": "b1b60d8cc25eb6816e2ddfd1eeac9943dd04d98fce291b83f3a2c457194ce312",
+  "source_sha256": {
+    "core/__init__.py": "5efa429686f4b99d75ce4decd2544301e07aca12229a7ff7d6cdcd04156ef881",
+    "core/evaluation.py": "932c4a08754c15b35c1b5edd41f1acffe90ee8c96a1f368fb84e1da672604e2d",
+    "core/generation.py": "82e68d60a9db608f5c4721d2e87f14cd571eac37b8166e07afb6990a956d0648",
+    "core/knowledge.py": "75d0b892de6a165ea1ef05a1fcb7a33eba9d10b3d6424ec6f2f68ca179bf597a",
+    "core/schemas.py": "82364ca1e7204090dad9ae26d57976ebe0fca445b17c5eb08fe5fa2a6bb414a4",
+    "core/scoring.py": "dea8ec3923c2114ae5839a63c35deb93d5eb62f25d47ee4361abf99a80dcd207",
+    "core/store.py": "23c2c403835a21eddd8d1a23bbf3f6450bfb57a43ea74ac78a1692d0608497bd",
+    "core/triage.py": "7f15735633ef7ffdec66802359e507b7c14f968a7ae770346c7bd4065bdd21d5"
+  },
+  "set_description": "Synthetic challenge set authored during development, not an independent real-world holdout"
+}

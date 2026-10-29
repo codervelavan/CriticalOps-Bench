@@ -1,0 +1,638 @@
+[
+  {
+    "case_id": "CHALLENGE-001",
+    "input": {
+      "description": "Pump bearing noise increased since the last shift.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "vibration_or_bearing",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [
+      "SOP-PUMP-VIBRATION"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-002",
+    "input": {
+      "description": "The shaft has strong vibration at normal load.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "vibration_or_bearing",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [
+      "SOP-PUMP-VIBRATION"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-003",
+    "input": {
+      "description": "A rotating assembly rattles and shakes at steady speed.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "vibration_or_bearing",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [
+      "SOP-PUMP-VIBRATION"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-004",
+    "input": {
+      "description": "Pump misalignment is suspected after unusual vibration.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "vibration_or_bearing",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [
+      "SOP-PUMP-VIBRATION"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-005",
+    "input": {
+      "description": "Bearing housing vibration and noise are increasing; safety review requested.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": true
+    },
+    "expected_category": "vibration_or_bearing",
+    "expected_priority": "critical_review",
+    "safety_expected": true,
+    "expected_article_ids": [
+      "SOP-PUMP-VIBRATION"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-006",
+    "input": {
+      "description": "A fan has vibration but no reported temperature change.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "vibration_or_bearing",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [
+      "SOP-PUMP-VIBRATION"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-007",
+    "input": {
+      "description": "The motor is hot during normal operation.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "overheating",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [
+      "SOP-MOTOR-OVERHEAT"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-008",
+    "input": {
+      "description": "Motor temperature rises despite unchanged load.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "overheating",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [
+      "SOP-MOTOR-OVERHEAT"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-009",
+    "input": {
+      "description": "The drive casing feels excessively warm during the shift.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "overheating",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [
+      "SOP-MOTOR-OVERHEAT"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-010",
+    "input": {
+      "description": "Overheating follows a ventilation blockage in the motor.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "overheating",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [
+      "SOP-MOTOR-OVERHEAT"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-011",
+    "input": {
+      "description": "Smoke is visible beside the motor.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": true
+    },
+    "expected_category": "overheating",
+    "expected_priority": "critical_review",
+    "safety_expected": true,
+    "expected_article_ids": [
+      "SOP-MOTOR-OVERHEAT"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-012",
+    "input": {
+      "description": "A burning smell was reported from the fan motor.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": true
+    },
+    "expected_category": "overheating",
+    "expected_priority": "critical_review",
+    "safety_expected": true,
+    "expected_article_ids": [
+      "SOP-MOTOR-OVERHEAT"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-013",
+    "input": {
+      "description": "Fluid is leaking at the pipe seal.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "leak_or_pressure",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [
+      "SOP-LEAK-DETECTION"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-014",
+    "input": {
+      "description": "Hydraulic pressure drops and a valve leak is visible.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "leak_or_pressure",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [
+      "SOP-LEAK-DETECTION"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-015",
+    "input": {
+      "description": "A wet patch grows beneath the unit; the source is unconfirmed.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "leak_or_pressure",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [
+      "SOP-LEAK-DETECTION"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-016",
+    "input": {
+      "description": "Small droplets collect beneath the pump seal.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "leak_or_pressure",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [
+      "SOP-LEAK-DETECTION"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-017",
+    "input": {
+      "description": "Unknown chemical fluid is spreading from the pipe.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": true
+    },
+    "expected_category": "leak_or_pressure",
+    "expected_priority": "critical_review",
+    "safety_expected": true,
+    "expected_article_ids": [
+      "SOP-LEAK-DETECTION"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-018",
+    "input": {
+      "description": "A leakage trail appears near the hydraulic valve.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "leak_or_pressure",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [
+      "SOP-LEAK-DETECTION"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-019",
+    "input": {
+      "description": "The conveyor belt is jammed beside the transfer point.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "conveyor_or_blockage",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [
+      "SOP-CONVEYOR-JAM"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-020",
+    "input": {
+      "description": "A blockage stops products moving along the conveyor.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "conveyor_or_blockage",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [
+      "SOP-CONVEYOR-JAM"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-021",
+    "input": {
+      "description": "Packages are stuck on the belt at the loading area.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "conveyor_or_blockage",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [
+      "SOP-CONVEYOR-JAM"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-022",
+    "input": {
+      "description": "The material transfer line will not advance packages.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "conveyor_or_blockage",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [
+      "SOP-CONVEYOR-JAM"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-023",
+    "input": {
+      "description": "Conveyor jam has trapped material; safety review requested.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": true
+    },
+    "expected_category": "conveyor_or_blockage",
+    "expected_priority": "critical_review",
+    "safety_expected": true,
+    "expected_article_ids": [
+      "SOP-CONVEYOR-JAM"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-024",
+    "input": {
+      "description": "Conveyor movement is uneven after a belt blockage.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "conveyor_or_blockage",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [
+      "SOP-CONVEYOR-JAM"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-025",
+    "input": {
+      "description": "Telemetry is missing for several timestamps.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "sensor_or_data_quality",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [
+      "SOP-SENSOR-QUALITY"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-026",
+    "input": {
+      "description": "Sensor drift makes readings inconsistent.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "sensor_or_data_quality",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [
+      "SOP-SENSOR-QUALITY"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-027",
+    "input": {
+      "description": "A pressure sensor has duplicate timestamps and missing data.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "sensor_or_data_quality",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [
+      "SOP-SENSOR-QUALITY"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-028",
+    "input": {
+      "description": "The temperature sensor reading spikes while the redundant gauge is stable.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "sensor_or_data_quality",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [
+      "SOP-SENSOR-QUALITY"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-029",
+    "input": {
+      "description": "Vibration sensor telemetry has inconsistent units; safety review requested.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": true
+    },
+    "expected_category": "sensor_or_data_quality",
+    "expected_priority": "critical_review",
+    "safety_expected": true,
+    "expected_article_ids": [
+      "SOP-SENSOR-QUALITY"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-030",
+    "input": {
+      "description": "The reported values disagree with the redundant measurement.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "sensor_or_data_quality",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [
+      "SOP-SENSOR-QUALITY"
+    ],
+    "expected_fallback": false
+  },
+  {
+    "case_id": "CHALLENGE-031",
+    "input": {
+      "description": "A purple display icon appears beside code QZX-812.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "general_maintenance",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [],
+    "expected_fallback": true
+  },
+  {
+    "case_id": "CHALLENGE-032",
+    "input": {
+      "description": "Please provide the exact torque for bolt QX-99.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "general_maintenance",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [],
+    "expected_fallback": true
+  },
+  {
+    "case_id": "CHALLENGE-033",
+    "input": {
+      "description": "How do I reset access credentials for the payroll application?",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "general_maintenance",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [],
+    "expected_fallback": true
+  },
+  {
+    "case_id": "CHALLENGE-034",
+    "input": {
+      "description": "Explain the cafeteria menu for tomorrow.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "general_maintenance",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [],
+    "expected_fallback": true
+  },
+  {
+    "case_id": "CHALLENGE-035",
+    "input": {
+      "description": "The panel shows symbol ZQ with no other details.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "general_maintenance",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [],
+    "expected_fallback": true
+  },
+  {
+    "case_id": "CHALLENGE-036",
+    "input": {
+      "description": "Give the approved pressure limit for an undocumented asset XZ-44.",
+      "asset_id": "DEMO-ASSET",
+      "site": "Synthetic site",
+      "production_impact": 3,
+      "estimated_downtime_hours": 1,
+      "safety_related": false
+    },
+    "expected_category": "general_maintenance",
+    "expected_priority": "medium",
+    "safety_expected": false,
+    "expected_article_ids": [],
+    "expected_fallback": true
+  }
+]

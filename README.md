@@ -1,5 +1,15 @@
 # CriticalOps AI Workbench
 
+## Verified extension
+
+- Versioned human review, duplicate-intake protection and atomic application audit records.
+- Typed incident/detail/review/audit/metrics responses, stable operation IDs and 404/409/422 handling.
+- [Locally validated OpenAPI 2.0 connector definition](connectors/README.md).
+- [Original and expanded synthetic evaluation results](evidence/README.md), including failures.
+- [As-is/to-be workflow](docs/workflow.md) and [analyst adoption/demo guide](docs/analyst_guide.md).
+
+Install development dependencies with `pip install -r requirements-dev.txt`, run `pytest -q`, then `python scripts/evaluate.py`. GitHub Actions repeats the checks. Existing databases gain a version column without dropping records. Reviewer labels are not authenticated identities; the API remains local-only. Live Power Platform integration is not asserted.
+
 **A governed AI use-case and incident-triage portfolio project for an enterprise AI Consultant / AI Solutions Analyst interview.**
 
 This independent prototype is inspired by themes in Atos's public materials on Atos Genesis Intelligence, Atos Codex and the Sovereign Agentic Studios: moving from AI experiments toward governed operations, connecting data and context to decisions, and measuring business value. It is **not** an Atos product or a recreation of proprietary systems. See [docs/atos_genesis_alignment.md](docs/atos_genesis_alignment.md).

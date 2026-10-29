@@ -1,8 +1,9 @@
+import sqlite3
 import pandas as pd
 import streamlit as st
 from core.evaluation import run_evaluation
 from core.scoring import demo_use_cases, score_use_case
-from core.store import init_db, list_incidents, metrics_summary, review_incident, save_incident
+from core.store import ReviewConflict, init_db, list_incidents, metrics_summary, review_incident, save_incident
 from core.triage import triage_incident
 
 st.set_page_config(page_title="CriticalOps AI Workbench", page_icon="🛠️", layout="wide")
@@ -74,7 +75,11 @@ with tab_triage:
             "estimated_downtime_hours": downtime, "safety_related": safety_related,
         }
         result = triage_incident(ticket)
-        save_incident(ticket, result)
+        try:
+            save_incident(ticket, result)
+        except sqlite3.IntegrityError:
+            st.error("Incident ID already exists. Choose a new ID; existing review history was preserved.")
+            st.stop()
         st.session_state["last_incident"] = result["incident_id"]
         st.success(f"Saved incident {result['incident_id']} for human review.")
         c1, c2, c3 = st.columns(3)
@@ -95,7 +100,7 @@ with tab_triage:
 with tab_review:
     st.subheader("Human review queue")
     incidents = list_incidents(500)
-    pending = [item for item in incidents if item.get("review_status") == "pending"]
+    pending = [item for item in incidents if item.get("review_status") in {"pending", "needs_more_information"}]
     if not pending:
         st.info("No incidents awaiting review yet. Submit one in the Incident triage tab.")
     else:
@@ -104,13 +109,23 @@ with tab_review:
         selected = labels[selected_label]
         st.write("**Ticket:**", selected.get("ticket", {}).get("description", ""))
         st.write("**Proposed response:**", selected.get("draft_response", ""))
+        snapshot_key = "review_snapshot_" + selected["incident_id"]
+        if snapshot_key not in st.session_state:
+            st.session_state[snapshot_key] = selected["version"]
+        st.caption("Reviewer names are unverified demo labels, not authenticated identities.")
         with st.form("review_form"):
             decision = st.selectbox("Decision", ["approved", "rejected", "needs_more_information"])
             reviewer = st.text_input("Reviewer", "Maintenance Analyst")
             comment = st.text_area("Review note", "Reviewed demo evidence and confirmed the next step.")
             review_submit = st.form_submit_button("Record review", type="primary")
         if review_submit:
-            review_incident(selected["incident_id"], decision, reviewer, comment)
+            try:
+                review_incident(selected["incident_id"], decision, reviewer, comment, st.session_state[snapshot_key])
+            except ReviewConflict as exc:
+                del st.session_state[snapshot_key]
+                st.error(str(exc))
+                st.stop()
+            del st.session_state[snapshot_key]
             st.success("Review decision recorded in the local audit log.")
             st.rerun()
     with st.expander("Recent incident history"):
