@@ -53,7 +53,7 @@ def save_incident(ticket: Dict[str, Any], triage: Dict[str, Any]) -> Dict[str, A
     incident_id = triage["incident_id"]
     with _connect() as conn:
         conn.execute(
-            "INSERT OR REPLACE INTO incidents(incident_id,created_at,ticket_json,triage_json,review_status) VALUES(?,?,?,?,?)",
+            "INSERT INTO incidents(incident_id,created_at,ticket_json,triage_json,review_status) VALUES(?,?,?,?,?)",
             (incident_id, triage["created_at"], json.dumps(ticket), json.dumps(triage), "pending"),
         )
         conn.execute(
@@ -113,3 +113,19 @@ def metrics_summary() -> Dict[str, Any]:
         cats[x.get("category", "unknown")] = cats.get(x.get("category", "unknown"), 0) + 1
         reviews[x.get("review_status", "pending")] = reviews.get(x.get("review_status", "pending"), 0) + 1
     return {"total_incidents": total, "pending_reviews": pending, "critical_reviews": critical, "fallback_rate_pct": round(fallback / total * 100, 1), "category_counts": cats, "review_counts": reviews}
+
+
+def get_incident(incident_id: str):
+    with _connect() as conn:
+        row = conn.execute("SELECT * FROM incidents WHERE incident_id=?", (incident_id,)).fetchone()
+    if row is None:
+        return None
+    result = json.loads(row["triage_json"])
+    result.update({key: row[key] for key in ("review_status", "reviewer", "review_comment", "reviewed_at")})
+    return result
+
+
+def audit_history(incident_id: str):
+    with _connect() as conn:
+        rows = conn.execute("SELECT * FROM audit_events WHERE incident_id=? ORDER BY id", (incident_id,)).fetchall()
+    return [dict(row) for row in rows]

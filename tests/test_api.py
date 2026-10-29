@@ -18,3 +18,16 @@ def test_api_triage_and_human_review(tmp_path, monkeypatch):
         })
         assert review.status_code == 200
         assert review.json()["review_status"] == "approved"
+
+
+def test_duplicate_preserves_review_and_history(tmp_path, monkeypatch):
+    monkeypatch.setenv("CRITICALOPS_DB_PATH", str(tmp_path / "duplicate.sqlite"))
+    with TestClient(app) as client:
+        ticket = {"incident_id": "FIXED-1", "description": "Pump bearing vibration"}
+        assert client.post("/api/incidents/triage", json=ticket).status_code == 200
+        assert client.post("/api/incidents/FIXED-1/review", json={"decision": "approved"}).status_code == 200
+        assert client.post("/api/incidents/triage", json=ticket).status_code == 409
+        assert client.get("/api/incidents/FIXED-1").json()["review_status"] == "approved"
+        assert len(client.get("/api/incidents/FIXED-1/audit").json()) == 2
+        assert client.get("/api/incidents/unknown").status_code == 404
+        assert client.get("/api/incidents/unknown/audit").status_code == 404
