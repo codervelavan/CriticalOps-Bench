@@ -1,0 +1,5 @@
+[
+  {"name":"Maintenance incident triage and SOP retrieval","business_value":5,"technical_feasibility":4,"data_readiness":4,"governance_readiness":4,"scalability":4,"implementation_effort":3},
+  {"name":"Fully autonomous repair execution","business_value":4,"technical_feasibility":2,"data_readiness":2,"governance_readiness":1,"scalability":2,"implementation_effort":5},
+  {"name":"Maintenance knowledge assistant with human approval","business_value":4,"technical_feasibility":5,"data_readiness":4,"governance_readiness":4,"scalability":4,"implementation_effort":2}
+]
