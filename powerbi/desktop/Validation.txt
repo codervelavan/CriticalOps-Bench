@@ -1,0 +1,10 @@
+Power BI native verification completed 30 October 2026
+Desktop version: 2.159.883.0
+PASS: Power Query/model refresh; 13 synthetic rows.
+PASS: both report pages render, 16 visuals including 2 text boxes.
+PASS: six baseline measures: 13 cases, category 92.3%, priority 100.0%, safety routing 100.0%, fallback 7.7%, 1 mismatch.
+PASS: mismatch slicer -> EVAL-013.
+PASS: fallback=True slicer -> EVAL-009.
+PASS: critical_review slicer -> EVAL-002/003/007/010.
+PASS: slicers reset, native save completed and saved report reopened with correct baseline values.
+No Service publication or productivity benchmark has been performed.

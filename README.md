@@ -5,6 +5,7 @@
 - Versioned human review, duplicate-intake protection and atomic application audit records.
 - Typed incident/detail/review/audit/metrics responses, stable operation IDs and 404/409/422 handling.
 - [Locally validated OpenAPI 2.0 connector definition](connectors/README.md).
+- [Desktop-verified Power BI report](powerbi/desktop/README.md): two pages, six DAX measures, tested filters and native save/reopen.
 - [Original and expanded synthetic evaluation results](evidence/README.md), including failures.
 - [As-is/to-be workflow](docs/workflow.md) and [analyst adoption/demo guide](docs/analyst_guide.md).
 

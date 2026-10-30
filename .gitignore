@@ -8,3 +8,8 @@ venv/
 *.db
 .streamlit/secrets.toml
 .DS_Store
+
+# Power BI local caches and machine state
+**/.pbi/
+**/localSettings.json
+**/cache.abf

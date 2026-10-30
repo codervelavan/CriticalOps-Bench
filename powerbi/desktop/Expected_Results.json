@@ -1,0 +1,11 @@
+{
+  "synthetic_cases": 13,
+  "category_exact_matches": 12,
+  "priority_exact_matches": 13,
+  "safety_expected_cases": 4,
+  "safety_routing_passes": 4,
+  "fallback_cases": 1,
+  "mismatch_case_ids": [
+    "EVAL-013"
+  ]
+}

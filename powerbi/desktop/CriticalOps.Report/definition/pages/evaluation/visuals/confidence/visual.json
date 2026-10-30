@@ -1,0 +1,102 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "name": "confidence",
+  "position": {
+    "x": 650,
+    "y": 525,
+    "z": 10,
+    "height": 170,
+    "width": 610,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Incidents"
+                    }
+                  },
+                  "Property": "incident_id"
+                }
+              },
+              "queryRef": "Incidents.incident_id",
+              "nativeQueryRef": "incident_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Incidents"
+                    }
+                  },
+                  "Property": "retrieval_confidence"
+                }
+              },
+              "queryRef": "Incidents.retrieval_confidence",
+              "nativeQueryRef": "retrieval_confidence"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Incidents"
+                    }
+                  },
+                  "Property": "fallback_used"
+                }
+              },
+              "queryRef": "Incidents.fallback_used",
+              "nativeQueryRef": "fallback_used"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Incidents"
+                    }
+                  },
+                  "Property": "evaluation_result"
+                }
+              },
+              "queryRef": "Incidents.evaluation_result",
+              "nativeQueryRef": "evaluation_result"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Evidence and fallback review'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

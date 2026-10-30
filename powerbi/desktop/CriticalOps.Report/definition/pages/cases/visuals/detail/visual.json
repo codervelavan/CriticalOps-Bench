@@ -1,0 +1,186 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "name": "detail",
+  "position": {
+    "x": 20,
+    "y": 235,
+    "z": 4,
+    "height": 460,
+    "width": 1240,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Incidents"
+                    }
+                  },
+                  "Property": "incident_id"
+                }
+              },
+              "queryRef": "Incidents.incident_id",
+              "nativeQueryRef": "incident_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Incidents"
+                    }
+                  },
+                  "Property": "asset_id"
+                }
+              },
+              "queryRef": "Incidents.asset_id",
+              "nativeQueryRef": "asset_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Incidents"
+                    }
+                  },
+                  "Property": "category_expected"
+                }
+              },
+              "queryRef": "Incidents.category_expected",
+              "nativeQueryRef": "category_expected"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Incidents"
+                    }
+                  },
+                  "Property": "category_predicted"
+                }
+              },
+              "queryRef": "Incidents.category_predicted",
+              "nativeQueryRef": "category_predicted"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Incidents"
+                    }
+                  },
+                  "Property": "priority_expected"
+                }
+              },
+              "queryRef": "Incidents.priority_expected",
+              "nativeQueryRef": "priority_expected"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Incidents"
+                    }
+                  },
+                  "Property": "priority_predicted"
+                }
+              },
+              "queryRef": "Incidents.priority_predicted",
+              "nativeQueryRef": "priority_predicted"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Incidents"
+                    }
+                  },
+                  "Property": "evaluation_result"
+                }
+              },
+              "queryRef": "Incidents.evaluation_result",
+              "nativeQueryRef": "evaluation_result"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Incidents"
+                    }
+                  },
+                  "Property": "fallback_used"
+                }
+              },
+              "queryRef": "Incidents.fallback_used",
+              "nativeQueryRef": "fallback_used"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Incidents"
+                    }
+                  },
+                  "Property": "retrieval_confidence"
+                }
+              },
+              "queryRef": "Incidents.retrieval_confidence",
+              "nativeQueryRef": "retrieval_confidence"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Incidents"
+                    }
+                  },
+                  "Property": "review_status"
+                }
+              },
+              "queryRef": "Incidents.review_status",
+              "nativeQueryRef": "review_status"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Inspect cases: select Mismatch to find the known category edge case'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

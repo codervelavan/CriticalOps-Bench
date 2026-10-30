@@ -1,0 +1,17 @@
+Synthetic Cases =
+COUNTROWS(Incidents)
+
+Category Exact Match =
+DIVIDE(COALESCE(CALCULATE(COUNTROWS(Incidents), Incidents[category_pass] = TRUE()), 0), [Synthetic Cases])
+
+Priority Exact Match =
+DIVIDE(COALESCE(CALCULATE(COUNTROWS(Incidents), Incidents[priority_pass] = TRUE()), 0), [Synthetic Cases])
+
+Safety Routing Pass =
+DIVIDE(CALCULATE(COUNTROWS(Incidents), Incidents[safety_expected] = TRUE(), Incidents[safety_escalation_pass] = TRUE()), CALCULATE(COUNTROWS(Incidents), Incidents[safety_expected] = TRUE()))
+
+Fallback Rate =
+DIVIDE(COALESCE(CALCULATE(COUNTROWS(Incidents), Incidents[fallback_used] = TRUE()), 0), [Synthetic Cases])
+
+Mismatch Cases =
+COALESCE(CALCULATE(COUNTROWS(Incidents), Incidents[evaluation_result] = "Mismatch"), 0)
