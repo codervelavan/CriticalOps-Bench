@@ -1,6 +1,6 @@
 # Copilot Studio build and test
 
-Status: prepared knowledge, instructions and tests; no Copilot agent has yet been created or tested in the account.
+Status: knowledge, instructions and acceptance tests are prepared. The candidate reports an unpublished prototype; these acceptance tests have not been executed against an accessible agent. See STATUS.md for the environment-verification limits.
 
 1. Sign in to Copilot Studio with an account allowed to create agents in a non-production environment. Confirm your license and environment before creating anything. A trial may permit testing but not publishing; do not buy a subscription merely for this demonstration.
 2. Create CriticalOps Knowledge Review Assistant. Use Agent_Instructions.md for its scope/instructions. Add only Synthetic_Maintenance_Knowledge.md as file knowledge. These are fictional sample SOPs, not actual approved industrial procedures.
