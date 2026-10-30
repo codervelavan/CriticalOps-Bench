@@ -13,3 +13,5 @@ Verified scope as of 30 October 2026.
 | Power Apps and Power Automate | No verified product execution | Pending environment access and implementation |
 
 Run `pytest -q` and `python scripts/evaluate.py` to reproduce the Python checks. Follow the Desktop verification instructions for reporting. New product results must include actual execution dates, configuration and failures. No credentials, employment history or customer adoption are established by this repository.
+
+Run `python scripts/demo_review.py` for a seven-step synthetic review demonstration. The [recorded transcript](local_review_demo.json) includes real local API responses, duplicate and stale-review conflicts, final approval and audit history. It uses a temporary database and disables the optional external model. It is not a Power Automate or Copilot Studio execution trace.

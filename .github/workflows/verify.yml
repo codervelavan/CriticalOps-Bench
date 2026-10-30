@@ -16,6 +16,7 @@ jobs:
       - run: pytest -q --junitxml=test-results.xml
       - run: python scripts/evaluate.py
       - run: git diff --exit-code -- connectors/criticalops.swagger.json evidence/
+      - run: python scripts/demo_review.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:

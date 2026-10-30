@@ -1,0 +1,271 @@
+{
+  "scope": "Actual local TestClient run, synthetic data; no Microsoft integration or authenticated reviewer identity.",
+  "steps": [
+    {
+      "step": "Intake",
+      "method": "POST",
+      "path": "/api/incidents/triage",
+      "request": {
+        "incident_id": "DEMO-REVIEW-1",
+        "description": "Pump bearing vibration and unusual noise"
+      },
+      "status": 200,
+      "response": {
+        "incident_id": "DEMO-REVIEW-1",
+        "created_at": "2026-10-30T10:15:15.501155+00:00",
+        "asset_id": "ASSET-UNKNOWN",
+        "site": "Demo Site",
+        "category": "vibration_or_bearing",
+        "suggested_priority": "medium",
+        "priority_reason": "Confirm impact and urgency with the reporter and compare with the approved site policy.",
+        "suggested_queue": "Mechanical Maintenance",
+        "suggested_next_step": "Review retrieved SOP evidence and asset history; a qualified person determines any intervention.",
+        "retrieved_sources": [
+          {
+            "article_id": "SOP-PUMP-VIBRATION",
+            "title": "Pump vibration inspection - initial analyst checklist",
+            "retrieval_score": 0.8
+          },
+          {
+            "article_id": "SOP-SENSOR-QUALITY",
+            "title": "Sensor reading quality checks",
+            "retrieval_score": 0.2
+          },
+          {
+            "article_id": "SOP-MOTOR-OVERHEAT",
+            "title": "Motor overheating - triage guidance",
+            "retrieval_score": 0.2
+          }
+        ],
+        "retrieval_mode": "keyword-baseline",
+        "retrieval_confidence": 0.8,
+        "fallback_used": false,
+        "draft_response": "Suggested category: vibration or bearing. Suggested priority: medium. Reason: Confirm impact and urgency with the reporter and compare with the approved site policy. Potentially relevant approved demo knowledge: Pump vibration inspection - initial analyst checklist (SOP-PUMP-VIBRATION). Review the cited material and the actual site procedure before deciding what to do. Please confirm the asset details and follow the approved site procedure. This is a decision-support draft, not an instruction to operate, stop, isolate, or repair equipment.",
+        "human_review_required": true,
+        "review_status": "pending",
+        "model_mode": "offline-template-demo",
+        "generation_error": "",
+        "disclaimer": "Synthetic portfolio demonstration only. Not an operational safety system. Always follow approved site procedures and qualified human judgment.",
+        "version": 0,
+        "reviewer": null,
+        "review_comment": null,
+        "reviewed_at": null,
+        "ticket": null
+      }
+    },
+    {
+      "step": "Duplicate rejected",
+      "method": "POST",
+      "path": "/api/incidents/triage",
+      "request": {
+        "incident_id": "DEMO-REVIEW-1",
+        "description": "Pump bearing vibration and unusual noise"
+      },
+      "status": 409,
+      "response": {
+        "detail": "Incident ID already exists"
+      }
+    },
+    {
+      "step": "Request details",
+      "method": "POST",
+      "path": "/api/incidents/DEMO-REVIEW-1/review",
+      "request": {
+        "decision": "needs_more_information",
+        "expected_version": 0,
+        "comment": "Confirm observation time"
+      },
+      "status": 200,
+      "response": {
+        "incident_id": "DEMO-REVIEW-1",
+        "created_at": "2026-10-30T10:15:15.501155+00:00",
+        "asset_id": "ASSET-UNKNOWN",
+        "site": "Demo Site",
+        "category": "vibration_or_bearing",
+        "suggested_priority": "medium",
+        "priority_reason": "Confirm impact and urgency with the reporter and compare with the approved site policy.",
+        "suggested_queue": "Mechanical Maintenance",
+        "suggested_next_step": "Review retrieved SOP evidence and asset history; a qualified person determines any intervention.",
+        "retrieved_sources": [
+          {
+            "article_id": "SOP-PUMP-VIBRATION",
+            "title": "Pump vibration inspection - initial analyst checklist",
+            "retrieval_score": 0.8
+          },
+          {
+            "article_id": "SOP-SENSOR-QUALITY",
+            "title": "Sensor reading quality checks",
+            "retrieval_score": 0.2
+          },
+          {
+            "article_id": "SOP-MOTOR-OVERHEAT",
+            "title": "Motor overheating - triage guidance",
+            "retrieval_score": 0.2
+          }
+        ],
+        "retrieval_mode": "keyword-baseline",
+        "retrieval_confidence": 0.8,
+        "fallback_used": false,
+        "draft_response": "Suggested category: vibration or bearing. Suggested priority: medium. Reason: Confirm impact and urgency with the reporter and compare with the approved site policy. Potentially relevant approved demo knowledge: Pump vibration inspection - initial analyst checklist (SOP-PUMP-VIBRATION). Review the cited material and the actual site procedure before deciding what to do. Please confirm the asset details and follow the approved site procedure. This is a decision-support draft, not an instruction to operate, stop, isolate, or repair equipment.",
+        "human_review_required": true,
+        "review_status": "needs_more_information",
+        "model_mode": "offline-template-demo",
+        "generation_error": "",
+        "disclaimer": "Synthetic portfolio demonstration only. Not an operational safety system. Always follow approved site procedures and qualified human judgment.",
+        "version": 1,
+        "reviewer": "Demo Reviewer",
+        "review_comment": "Confirm observation time",
+        "reviewed_at": "2026-10-30T10:15:15.511642+00:00",
+        "ticket": null
+      }
+    },
+    {
+      "step": "Stale review rejected",
+      "method": "POST",
+      "path": "/api/incidents/DEMO-REVIEW-1/review",
+      "request": {
+        "decision": "approved",
+        "expected_version": 0
+      },
+      "status": 409,
+      "response": {
+        "detail": "Review changed or was finalised; reload the incident before reviewing"
+      }
+    },
+    {
+      "step": "Approve current version",
+      "method": "POST",
+      "path": "/api/incidents/DEMO-REVIEW-1/review",
+      "request": {
+        "decision": "approved",
+        "expected_version": 1,
+        "comment": "Synthetic details reviewed"
+      },
+      "status": 200,
+      "response": {
+        "incident_id": "DEMO-REVIEW-1",
+        "created_at": "2026-10-30T10:15:15.501155+00:00",
+        "asset_id": "ASSET-UNKNOWN",
+        "site": "Demo Site",
+        "category": "vibration_or_bearing",
+        "suggested_priority": "medium",
+        "priority_reason": "Confirm impact and urgency with the reporter and compare with the approved site policy.",
+        "suggested_queue": "Mechanical Maintenance",
+        "suggested_next_step": "Review retrieved SOP evidence and asset history; a qualified person determines any intervention.",
+        "retrieved_sources": [
+          {
+            "article_id": "SOP-PUMP-VIBRATION",
+            "title": "Pump vibration inspection - initial analyst checklist",
+            "retrieval_score": 0.8
+          },
+          {
+            "article_id": "SOP-SENSOR-QUALITY",
+            "title": "Sensor reading quality checks",
+            "retrieval_score": 0.2
+          },
+          {
+            "article_id": "SOP-MOTOR-OVERHEAT",
+            "title": "Motor overheating - triage guidance",
+            "retrieval_score": 0.2
+          }
+        ],
+        "retrieval_mode": "keyword-baseline",
+        "retrieval_confidence": 0.8,
+        "fallback_used": false,
+        "draft_response": "Suggested category: vibration or bearing. Suggested priority: medium. Reason: Confirm impact and urgency with the reporter and compare with the approved site policy. Potentially relevant approved demo knowledge: Pump vibration inspection - initial analyst checklist (SOP-PUMP-VIBRATION). Review the cited material and the actual site procedure before deciding what to do. Please confirm the asset details and follow the approved site procedure. This is a decision-support draft, not an instruction to operate, stop, isolate, or repair equipment.",
+        "human_review_required": true,
+        "review_status": "approved",
+        "model_mode": "offline-template-demo",
+        "generation_error": "",
+        "disclaimer": "Synthetic portfolio demonstration only. Not an operational safety system. Always follow approved site procedures and qualified human judgment.",
+        "version": 2,
+        "reviewer": "Demo Reviewer",
+        "review_comment": "Synthetic details reviewed",
+        "reviewed_at": "2026-10-30T10:15:15.536877+00:00",
+        "ticket": null
+      }
+    },
+    {
+      "step": "Inspect final record",
+      "method": "GET",
+      "path": "/api/incidents/DEMO-REVIEW-1",
+      "request": null,
+      "status": 200,
+      "response": {
+        "incident_id": "DEMO-REVIEW-1",
+        "created_at": "2026-10-30T10:15:15.501155+00:00",
+        "asset_id": "ASSET-UNKNOWN",
+        "site": "Demo Site",
+        "category": "vibration_or_bearing",
+        "suggested_priority": "medium",
+        "priority_reason": "Confirm impact and urgency with the reporter and compare with the approved site policy.",
+        "suggested_queue": "Mechanical Maintenance",
+        "suggested_next_step": "Review retrieved SOP evidence and asset history; a qualified person determines any intervention.",
+        "retrieved_sources": [
+          {
+            "article_id": "SOP-PUMP-VIBRATION",
+            "title": "Pump vibration inspection - initial analyst checklist",
+            "retrieval_score": 0.8
+          },
+          {
+            "article_id": "SOP-SENSOR-QUALITY",
+            "title": "Sensor reading quality checks",
+            "retrieval_score": 0.2
+          },
+          {
+            "article_id": "SOP-MOTOR-OVERHEAT",
+            "title": "Motor overheating - triage guidance",
+            "retrieval_score": 0.2
+          }
+        ],
+        "retrieval_mode": "keyword-baseline",
+        "retrieval_confidence": 0.8,
+        "fallback_used": false,
+        "draft_response": "Suggested category: vibration or bearing. Suggested priority: medium. Reason: Confirm impact and urgency with the reporter and compare with the approved site policy. Potentially relevant approved demo knowledge: Pump vibration inspection - initial analyst checklist (SOP-PUMP-VIBRATION). Review the cited material and the actual site procedure before deciding what to do. Please confirm the asset details and follow the approved site procedure. This is a decision-support draft, not an instruction to operate, stop, isolate, or repair equipment.",
+        "human_review_required": true,
+        "review_status": "approved",
+        "model_mode": "offline-template-demo",
+        "generation_error": "",
+        "disclaimer": "Synthetic portfolio demonstration only. Not an operational safety system. Always follow approved site procedures and qualified human judgment.",
+        "version": 2,
+        "reviewer": "Demo Reviewer",
+        "review_comment": "Synthetic details reviewed",
+        "reviewed_at": "2026-10-30T10:15:15.536877+00:00",
+        "ticket": null
+      }
+    },
+    {
+      "step": "Inspect history",
+      "method": "GET",
+      "path": "/api/incidents/DEMO-REVIEW-1/audit",
+      "request": null,
+      "status": 200,
+      "response": [
+        {
+          "id": 1,
+          "event_time": "2026-10-30 10:15:15",
+          "incident_id": "DEMO-REVIEW-1",
+          "event_type": "triaged",
+          "actor": "system-demo",
+          "details": "{\"model_mode\": \"offline-template-demo\", \"retrieval_mode\": \"keyword-baseline\"}"
+        },
+        {
+          "id": 2,
+          "event_time": "2026-10-30 10:15:15",
+          "incident_id": "DEMO-REVIEW-1",
+          "event_type": "human_review",
+          "actor": "Demo Reviewer",
+          "details": "{\"actor_type\": \"unverified_demo_label\", \"previous_status\": \"pending\", \"decision\": \"needs_more_information\", \"comment\": \"Confirm observation time\", \"previous_version\": 0, \"version\": 1}"
+        },
+        {
+          "id": 3,
+          "event_time": "2026-10-30 10:15:15",
+          "incident_id": "DEMO-REVIEW-1",
+          "event_type": "human_review",
+          "actor": "Demo Reviewer",
+          "details": "{\"actor_type\": \"unverified_demo_label\", \"previous_status\": \"needs_more_information\", \"decision\": \"approved\", \"comment\": \"Synthetic details reviewed\", \"previous_version\": 1, \"version\": 2}"
+        }
+      ]
+    }
+  ]
+}
