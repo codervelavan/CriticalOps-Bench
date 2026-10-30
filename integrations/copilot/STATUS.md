@@ -1,11 +1,21 @@
 # Copilot Studio verification status
 
-Prepared: fictional knowledge, agent instructions and 12 acceptance tests. Acceptance result fields remain blank because this package has not been executed against an accessible agent.
+## Verified access check on 30 October 2026
 
-User reports an unpublished prototype. The previous environment check found missing Dataverse. The current attempt reached Microsoft sign-in in the in-app browser; after the user signed in, Power BI Desktop account sign-in was verified, but Copilot Studio environment access could not be re-established through the browser connection. Current Dataverse availability is not confirmed.
+Sign-in succeeded with the work account. The default organisational environment is visible. The agent creation screen explicitly reports:
 
-No published agent, tested Power Automate flow, live custom connector or quantified Copilot test results are asserted. A usable signed-in Copilot Studio environment remains necessary for product-side verification. Keep these tests separate from the Python baseline/challenge results.
+> Dataverse isn't set up in this environment
+>
+> Agents need Microsoft Dataverse to store their configuration, but it isn't set up in this environment. Ask your administrator to provision Dataverse for this environment, then try again.
 
-## Access check 30 October 2026
+The environment picker showed no alternative environments. The Workflows page also requested an environment selection. This observation does not establish whether standalone Power Automate or Power Apps are licensed or usable elsewhere.
 
-A fresh Chrome tab redirected Copilot Studio to Microsoft sign-in. Product access and Dataverse readiness remain unverified. The 13 baseline product-test rows are now prepared separately in `Baseline_13_Product_Tests.csv`; actual-result fields remain blank. These supplement, rather than replace, the existing 12 acceptance tests. No product run is asserted.
+## Prepared material, not executed product tests
+
+Fictional knowledge, agent instructions, 12 acceptance tests and a separate 13-row baseline product-test sheet are prepared. Actual response fields remain blank. A previously reported unpublished prototype could not be inspected in this environment.
+
+No published agent, tested approval flow, live custom connector or quantified agent test results are asserted. Python baseline/challenge results and local review transcripts remain separate from Microsoft product verification.
+
+## Dependency
+
+An administrator must provision Dataverse in an appropriate environment and provide suitable maker access, or supply an existing enabled environment. No paid hosting, licence purchase or environment provisioning was performed. After access is available, inspect the prototype or create an unpublished synthetic-only agent, connect the sample knowledge and execute both test suites with actual responses and failures recorded.
