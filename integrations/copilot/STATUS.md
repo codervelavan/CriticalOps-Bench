@@ -5,3 +5,7 @@ Prepared: fictional knowledge, agent instructions and 12 acceptance tests. Accep
 User reports an unpublished prototype. The previous environment check found missing Dataverse. The current attempt reached Microsoft sign-in in the in-app browser; after the user signed in, Power BI Desktop account sign-in was verified, but Copilot Studio environment access could not be re-established through the browser connection. Current Dataverse availability is not confirmed.
 
 No published agent, tested Power Automate flow, live custom connector or quantified Copilot test results are asserted. A usable signed-in Copilot Studio environment remains necessary for product-side verification. Keep these tests separate from the Python baseline/challenge results.
+
+## Access check 30 October 2026
+
+A fresh Chrome tab redirected Copilot Studio to Microsoft sign-in. Product access and Dataverse readiness remain unverified. The 13 baseline product-test rows are now prepared separately in `Baseline_13_Product_Tests.csv`; actual-result fields remain blank. These supplement, rather than replace, the existing 12 acceptance tests. No product run is asserted.
