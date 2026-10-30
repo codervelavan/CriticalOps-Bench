@@ -1,5 +1,7 @@
 # CriticalOps AI Workbench
 
+[Submitted profile evidence index](evidence/submitted_profile_index.md) | [Learning walkthrough](docs/learning_walkthrough.md)
+
 ## Verified extension
 
 - Versioned human review, duplicate-intake protection and atomic application audit records.
@@ -36,7 +38,7 @@ Supporting user stories cover use-case scoring, operational analytics, governanc
 - **Evaluation suite:** compare output with labelled synthetic cases; report category and priority exact match and whether safety cases go to review.
 - **Operational metrics:** local incident counts, pending reviews, fallback rate and category distribution.
 - **FastAPI:** JSON API with OpenAPI docs.
-- **Power BI handoff:** synthetic CSV, dashboard plan and example DAX.
+- **Power BI report:** Desktop-verified two-page project with six DAX measures and synthetic source rows.
 
 ## Architecture
 
@@ -145,6 +147,8 @@ pytest -q
 | POST | `/api/incidents/{incident_id}/review` | Record a human review decision |
 | POST | `/api/evaluate` | Run synthetic evaluation set |
 | GET | `/api/metrics` | Summary metrics |
+| GET | `/api/incidents/{incident_id}` | Incident detail and current version |
+| GET | `/api/incidents/{incident_id}/audit` | Application audit history |
 
 Example request:
 
