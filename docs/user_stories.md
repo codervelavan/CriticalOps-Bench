@@ -47,7 +47,6 @@ Acceptance: OpenAPI docs are available at `/docs`; malformed input is rejected; 
 
 ## Out of scope
 
-- Actual integration with Atos internal systems or any customer service-management platform.
 - Real industrial telemetry ingestion or machine control.
 - Automated safety decisions, lockout/tagout instructions, repairs, or equipment restarts.
 - Production-grade identity, tenant isolation, key management, disaster recovery or regulatory certification.

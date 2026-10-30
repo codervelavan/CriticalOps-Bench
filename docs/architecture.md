@@ -52,7 +52,6 @@ This demo models a small operational context rather than a full knowledge graph:
 - **Permissions:** this demo uses reviewer labels only and is not identity-secured. Real deployment must enforce authenticated identities and resource-level access control in the backend.
 - **Possible actions:** draft response, route recommendation, request information, record review. No equipment-control action exists.
 
-This is inspired by the public description of Atos Codex's operational ontology and governed actions, but it is not a reproduction of Atos Codex or Genesis Intelligence.
 
 ## Proposed production evolution
 

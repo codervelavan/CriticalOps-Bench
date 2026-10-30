@@ -11,7 +11,7 @@ This source project uses the public CriticalOps-Bench synthetic incident CSV. It
 5. Open Transform Data and explain CSV parsing, header promotion, boolean/date/number conversion, trimmed identifiers and the derived evaluation_result column.
 6. Inspect the DAX measures. Explain why safety routing divides by four safety cases, not all thirteen rows, and why these figures do not measure real-world quality.
 7. In Case Review, select Mismatch and inspect the expected vs predicted categories. Reset slicers to inspect all cases.
-8. Save as a PBIX after checking rendering, filters and refresh. Add Power BI/Power Query/DAX to your resume only when you can demonstrate and explain this work yourself.
+8. Save as a PBIX after checking rendering, filters and refresh. Verify and explain the Power Query transformations and DAX measures before sharing the report.
 
 ## Data interpretation
 

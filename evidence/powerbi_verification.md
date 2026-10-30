@@ -18,4 +18,4 @@ Screenshots: [overview](screenshots/powerbi_overview.png), [mismatch](screenshot
 
 All data is synthetic. The report describes agreement with author-written labels, not production accuracy or measured business value. It has no human time baseline, no realised savings measure and no Service publication. Prepared report sources are portable; first use on another computer requires Refresh because local caches are intentionally excluded.
 
-Reproduction: open the PBIP, Refresh, compare the six cards, use Case Review slicers, clear each selection, save and reopen. Explain the safety denominator (four cases), separate priority/category agreement, and discuss the known failure. Review the Power Query steps and six DAX definitions before demonstrating the report in an interview.
+Reproduction: open the PBIP, Refresh, compare the six cards, use Case Review slicers, clear each selection, save and reopen. Explain the safety denominator (four cases), separate priority/category agreement, and discuss the known failure. Review the Power Query steps and six DAX definitions before demonstrating the report.

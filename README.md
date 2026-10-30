@@ -1,6 +1,6 @@
 # CriticalOps AI Workbench
 
-[Submitted profile evidence index](evidence/submitted_profile_index.md) | [Learning walkthrough](docs/learning_walkthrough.md)
+[Capability evidence index](evidence/capabilities.md) | [Learning walkthrough](docs/learning_walkthrough.md)
 
 ## Verified extension
 
@@ -13,9 +13,9 @@
 
 Install development dependencies with `pip install -r requirements-dev.txt`, run `pytest -q`, then `python scripts/evaluate.py`. GitHub Actions repeats the checks. Existing databases gain a version column without dropping records. Reviewer labels are not authenticated identities; the API remains local-only. Live Power Platform integration is not asserted.
 
-**A governed AI use-case and incident-triage portfolio project for an enterprise AI Consultant / AI Solutions Analyst interview.**
+**An independent maintenance decision-support prototype for use-case assessment, incident triage and human review.**
 
-This independent prototype is inspired by themes in Atos's public materials on Atos Genesis Intelligence, Atos Codex and the Sovereign Agentic Studios: moving from AI experiments toward governed operations, connecting data and context to decisions, and measuring business value. It is **not** an Atos product or a recreation of proprietary systems. See [docs/atos_genesis_alignment.md](docs/atos_genesis_alignment.md).
+The workbench explores evidence-linked recommendations, review workflows and measurable evaluation using fictional maintenance incidents.
 
 All incidents and procedures in this repository are fictional. The default application uses transparent rules, keyword retrieval and templated responses. An optional OpenAI-compatible chat-completions endpoint can be configured to draft grounded responses when evidence is present; it is disabled by default. The current retriever is keyword-based, not embedding/vector search, and the app does not execute agent actions.
 
@@ -79,7 +79,6 @@ criticalops-ai-workbench/
 ├── docs/
 │   ├── user_stories.md
 │   ├── architecture.md
-│   ├── atos_genesis_alignment.md
 │   ├── business_case.md
 │   ├── test_plan.md
 │   └── risk_register.md
@@ -169,13 +168,13 @@ The data set is synthetic and small. The evaluation metrics measure this test se
 
 ## Important limitations
 
-- No real Atos APIs, tools, environments, systems, or client data are used.
+- No customer APIs, internal systems or private operational data are used.
 - No physical equipment is controlled and no repair/stop/restart action is executed.
 - Human review is a workflow feature, not a production identity/authorisation system.
 - No vector database or external LLM is configured by default; the optional LLM adapter is still not an agent or a production integration.
 - Deployment security, secrets management, tenancy, observability, and disaster recovery are not production-grade.
 
-## Interview demonstration flow (5 minutes)
+## Demonstration flow (5 minutes)
 
 1. Explain the operational problem and the measurable hypothesis.
 2. Score three use cases and explain why autonomous repair is not a safe first pilot.
@@ -186,13 +185,3 @@ The data set is synthetic and small. The evaluation metrics measure this test se
 7. Show the operational metrics/Power BI-ready data.
 8. Explain how you would add semantic retrieval, approved connectors, identity, observability, model-cost logging and a controlled production pilot.
 
-## Public Atos context
-
-Official reading:
-
-- [Atos Genesis Intelligence and Atos Codex (26 October 2026)](https://www.atos.ai/en/news-insights/press-releases/atos-launches-atos-genesis-intelligence-suite-featuring-atos-codex)
-- [Atos Sovereign Agentic Studios](https://www.atos.ai/en/services/agentic-ai-autonomous-enterprise/ai-atos-sovereign-agentic-studios)
-- [Atos tech ambition: AI-powered services and Service-as-Software](https://www.atosgroup.com/en/our-group/our-tech-ambition)
-- [Atos and Microsoft secure agentic AI collaboration (9 June 2026)](https://www.atosgroup.com/en/press/atos-group-and-microsoft-expand-strategic-collaboration-scale-secure-agentic-ai-across-atos)
-
-The project alignment notes distinguish these public claims from design inferences.
