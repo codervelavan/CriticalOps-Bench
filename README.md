@@ -1,6 +1,6 @@
 # CriticalOps AI Workbench
 
-[Capability evidence index](evidence/capabilities.md) | [Learning walkthrough](docs/learning_walkthrough.md)
+[Capability evidence index](evidence/capabilities.md) | [Learning walkthrough](docs/learning_walkthrough.md) | [Gemini Skill evaluation](integrations/gemini/README.md)
 
 ## Verified extension
 
